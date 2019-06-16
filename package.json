@@ -1,0 +1,35 @@
+{
+  "name": "greenbriarschool",
+  "version": "1.0.0",
+  "description": "Greenbriar Community School",
+  "author": "jasenmichael",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "deploy-local": "rm -rf /var/www/public_html && nuxt generate && mv ../public_html /var/www"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.3.0",
+    "@nuxtjs/pwa": "^2.6.0",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.1.3",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "lodash": "^4.17.11",
+    "lodash.assign": "^4.2.0",
+    "lodash.merge": "^4.6.1",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.9",
+    "vue-jest": "^3.0.3"
+  }
+}
