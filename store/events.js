@@ -67,7 +67,7 @@ export const actions = {
       }
     }
     const categories = await this.$axios.$get('https://www.eventbriteapi.com/v3/categories', config)
-    commit('setCategories', categories)
+    commit('setCategories', categories.categories)
   },
   async getSubcategories({
     commit
@@ -78,33 +78,25 @@ export const actions = {
       }
     }
     const subcategories = await this.$axios.$get('https://www.eventbriteapi.com/v3/subcategories', config)
-    // console.log(subcategories.pagination)
     let moreCategories = []
     if (subcategories.pagination.page_count != 1) {
-      // console.log("yo...")
       for (let i = 2; i < subcategories.pagination.page_count + 1; i++) {
-        // console.log(i+1)
         await this.$axios.get('https://www.eventbriteapi.com/v3/subcategories?page=' + i, config)
           .then((res) => {
-            console.log("index", i)
-            console.log("-----------")
-            // console.log(res.data.subcategories)
+            // console.log("index", i)
+            // console.log("-----------")
             if (res.status === 200) {
               let categories = moreCategories.concat(res.data.subcategories)
-              // let categories = [...moreCategories, ...res.data.subcategories]
               moreCategories = categories
-              console.log(res.data.subcategories.length)
-              console.log("cat len", categories.length)
-              // console.log("more length", moreCategories)
             }
           })
       }
     }
 
-    console.log("-----------")
-    console.log(moreCategories.length)
+    // console.log("-----------")
+    // console.log(moreCategories.length)
     let allCategories = moreCategories.concat(subcategories.subcategories)
-    console.log(allCategories.length)
+    // console.log(allCategories.length)
     // commit('setSubcategories', subcategories)
     commit('setSubcategories', allCategories)
   },

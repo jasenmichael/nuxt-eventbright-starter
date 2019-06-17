@@ -40,20 +40,15 @@ export default {
       }
       return axios.get('https://www.eventbriteapi.com/v3/users/me/events', config)
         .then((res) => {
-          return res.data.events.map((event) => {
-            let events = {
-              route: '/events/' + event.name.text.replace(/\s+/g, '-').toLowerCase(),
+          let events = res.data.events.filter(event => event.status === "live")
+          return events.map((event) => {
+            let liveEvents = {
+              route: '/event/' + event.name.text.replace(/\s+/g, '-').toLowerCase(),
               // route: '/event/' + event.id,
               payload: event
             }
-            // let liveEvents = []
-            // liveEvents.push(events)
-            return events
+            return liveEvents
           })
-          // let liveEvents = events.payload.event.filter(function (event) {
-          //   return event.status === "live"
-          // })
-          // return liveEvents
         })
     }
   },
