@@ -1,5 +1,7 @@
 # Nuxt Eventbrite Starter
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a5af3d66-455f-4c59-a817-b77540a371a3/deploy-status)](https://app.netlify.com/sites/hardcore-ramanujan-87b5f1/deploys)
+
 filters and gets only "live events"
 copy example.env to .env, add your eventbright key (make sure to NOT commit your .env file!)
 
