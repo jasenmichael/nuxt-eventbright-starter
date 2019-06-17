@@ -17,15 +17,15 @@
 <script>
 export default {
   async fetch({ store }) {
+    await store.dispatch("events/get");
     if (store.state.events.list.length == 0) {
-      await store.dispatch("events/get");
     }
     if (store.state.events.categories.length == 0) {
-      await store.dispatch("events/getCategories");
     }
+    await store.dispatch("events/getCategories");
     if (store.state.events.subcategories.length == 0) {
-      await store.dispatch("events/getSubcategories");
     }
+    await store.dispatch("events/getSubcategories");
   },
   data() {
     return {
