@@ -31,7 +31,7 @@ export default {
     port: "3030"
   },
   generate: {
-    dir: "../public_html",
+    dir: "dist",
     routes: function () {
       let config = {
         headers: {
