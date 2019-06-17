@@ -42,8 +42,8 @@ export default {
         .then((res) => {
           return res.data.events.map((event) => {
             let events = {
-              // route: '/events/' + event.name.text.replace(/\s+/g, '-').toLowerCase(),
-              route: '/event/' + event.id,
+              route: '/events/' + event.name.text.replace(/\s+/g, '-').toLowerCase(),
+              // route: '/event/' + event.id,
               payload: event
             }
             // let liveEvents = []
