@@ -1,16 +1,46 @@
 <template>
-  <div class="container">
-    <h3>Event Page</h3>
-    <nuxt-link :to="'/events'">Back to Events Page</nuxt-link>
-    <h1>{{ getEvent().name.text }}</h1>
-    <div v-html="getEvent().description.html"></div>
-    <hr>
-    <pre>{{ getCategory() }}</pre>
-    <pre>{{ getSubcategory() }}</pre>
-    <hr>
-    <pre>{{ getEvent() }}</pre>
-    <!-- <pre>{{ this.$store.state.events.categories }}</pre>
-    <pre>{{ this.$store.state.events.subcategories }}</pre>-->
+  <div>
+    <nuxt-link :to="'/events'">Events</nuxt-link>
+    <span>&middot; {{ getEvent().urlPath }}</span>
+    <br>
+    <div class="">
+      <b-jumbotron
+        id="hero"
+        class="text-md-center text-sm-left mt-6"
+        container-fluid
+        :header="getEvent().name.text"
+        :lead="getEvent().description.text"
+        style="background-image: url(https://mdbootstrap.com/img/Photos/Others/forest2.jpg); background-repeat: no-repeat;"
+      >
+        <!-- <p v-html="getEvent().description.html"></p> -->
+        <b-button variant="primary" href="#">More Info</b-button>
+      </b-jumbotron>
+    </div>
+    <div>
+      <!-- <b-jumbotron
+        overlay
+        :img-src="getEvent().logo.original.url"
+        :header="getEvent().name.text"
+        :lead="getEvent().description.text"
+      >
+      </b-jumbotron>-->
+    </div>
+    <!-- <b-img :src="getEvent().logo.original.url" fluid alt="Responsive image"></b-img> -->
+    <div class="container">
+      <div id="category">
+        <p>
+          Category:
+          <span>{{ getCategory() }} / {{ getSubcategory() }}</span>
+        </p>
+      </div>
+      <!-- <h1>{{ getEvent().name.text }}</h1> -->
+      <div v-html="getEvent().description.html.replace(getEvent().description.text, '')"></div>
+      <hr>
+      <hr>
+      <!-- <pre>{{ getEvent() }}</pre>
+      <pre>{{ this.$store.state.events.categories }}</pre>
+      <pre>{{ this.$store.state.events.subcategories }}</pre>-->
+    </div>
   </div>
 </template>
 
@@ -54,4 +84,18 @@ export default {
   }
 };
 </script>
+
+<style>
+#hero {
+  min-height: 70vh;
+}
+img {
+  border-radius: 8px;
+  max-width: 450px;
+  max-height: 450px;
+
+  float: left;
+}
+</style>
+
 

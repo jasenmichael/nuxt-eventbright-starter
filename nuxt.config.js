@@ -22,11 +22,33 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
+
     link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }]
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        href: "@/assets/css/bootstrap.min.css",
+        rel: "stylesheet"
+      },
+      {
+        href: "@/assets/css/all.min.css",
+        rel: "stylesheet"
+      },
+      {
+        href: 'https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic',
+        rel: 'stylesheet'
+      },
+      {
+        href: 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',
+        rel: 'stylesheet'
+      },
+      {
+        href: '@/assets/css/bootstrap-custom.css',
+        rel: 'stylesheet'
+      }
+    ]
   },
   server: {
     port: "3030"
@@ -76,8 +98,14 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: [
+      'assets/scss/scss/style.scss'
+    ]
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

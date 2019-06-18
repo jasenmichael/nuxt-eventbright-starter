@@ -1,13 +1,22 @@
 <template>
-  <div>
-    <nuxt />
-  </div>
+  <section>
+    <b-nav fill>
+      <b-nav-item to="/">Home</b-nav-item>
+      <b-nav-item>Link</b-nav-item>
+      <b-nav-item>Link with a long name</b-nav-item>
+      <b-nav-item to="/events">Events & Workshops</b-nav-item>
+    </b-nav>
+    <div>
+      <nuxt/>
+    </div>
+  </section>
 </template>
+
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
