@@ -3,7 +3,7 @@
     <nuxt-link :to="'/events'">Events</nuxt-link>
     <span>&middot; {{ getEvent().urlPath }}</span>
     <br>
-    <div class="">
+    <div>
       <b-jumbotron
         id="hero"
         class="text-md-center text-sm-left mt-6"
@@ -16,15 +16,7 @@
         <b-button variant="primary" href="#">More Info</b-button>
       </b-jumbotron>
     </div>
-    <div>
-      <!-- <b-jumbotron
-        overlay
-        :img-src="getEvent().logo.original.url"
-        :header="getEvent().name.text"
-        :lead="getEvent().description.text"
-      >
-      </b-jumbotron>-->
-    </div>
+
     <!-- <b-img :src="getEvent().logo.original.url" fluid alt="Responsive image"></b-img> -->
     <div class="container">
       <div id="category">
@@ -34,7 +26,10 @@
         </p>
       </div>
       <!-- <h1>{{ getEvent().name.text }}</h1> -->
-      <div v-html="getEvent().description.html.replace(getEvent().description.text, '')"></div>
+      <div
+        class="content"
+        v-html="getEvent().description.html.replace(getEvent().description.text, '')"
+      ></div>
       <hr>
       <hr>
       <!-- <pre>{{ getEvent() }}</pre>
@@ -89,12 +84,28 @@ export default {
 #hero {
   min-height: 70vh;
 }
-img {
+
+.content div:nth-child(even) > img {
+  border-radius: 8px;
+  max-width: 400px;
+  max-height: 400px;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  float: left;
+  clear: both;
+}
+
+.content div:nth-child(odd) > img {
   border-radius: 8px;
   max-width: 450px;
   max-height: 450px;
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
 
-  float: left;
+  float: right;
+  clear: both;
 }
 </style>
 
