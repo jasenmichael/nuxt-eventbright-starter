@@ -19,11 +19,6 @@ export default {
     };
   },
   async fetch({ store }) {
-    // if (store.state.events.list.length == 0) {
-    //   await store.dispatch("events/get");
-
-
-  // async asyncData({ store }) {
     if (store.state.events.list.length == 0) {
       await store.dispatch("events/get");
     }
@@ -33,11 +28,6 @@ export default {
     if (store.state.events.subcategories.length == 0) {
       await store.dispatch("events/getSubcategories");
     }
-  // },
-
-
-
-    // }
   }
 };
 </script>

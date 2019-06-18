@@ -44,7 +44,9 @@ export const actions = {
         'Authorization': 'Bearer ' + process.env.EVENTBRITE_KEY
       }
     }
-    await this.$axios.get('https://www.eventbriteapi.com/v3/users/me/events', config)
+    // await this.$axios.get('https://www.eventbriteapi.com/v3/users/me/events', config)
+    // await this.$axios.get('https://www.eventbriteapi.com/v3/events/search', config)
+    await this.$axios.get('https://www.eventbriteapi.com/v3/organizations/312706594048/events/?order_by=start_asc', config)
       .then((res) => {
         if (res.status === 200) {
           // get "live" events
@@ -52,12 +54,29 @@ export const actions = {
           events.map(event => {
             event.urlPath = event.name.text.replace(/\s+/g, '-').toLowerCase()
           })
-          // console.log(liveEvents)
-          // listEvents.urlPath = event.name.text.replace(/\s+/g, '-').toLowerCase(),
-          commit('set', events)
+          // async function getEventDescription (eventID) {
+          //   let descriptionHTML = await this.$axios.$get(`https://www.eventbriteapi.com/v3/events/${eventID}/description`, config)
+          //   return descriptionHTML
+          // }
+          events.forEach(event => {
+            console.log(event.id)
+            // getEventDescription()
+            this.$axios.$get(`https://www.eventbriteapi.com/v3/events/${event.id}/description`, config)
+              .then(res => {
+                event.description.html = res.description
+              })
+            // event.description.html = getEventDescription(event.id)
+          })
+
+          return events
         }
+      }).then((events) => {
+        commit('set', events)
+
       })
   },
+
+
   async getCategories({
     commit
   }) {
